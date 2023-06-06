@@ -1,10 +1,10 @@
-
 import './App.css';
+import Grid from './Grid'
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-
+      <Grid />
     </div>
   );
 }
