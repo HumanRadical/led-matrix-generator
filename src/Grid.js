@@ -15,10 +15,10 @@ const Grid = () => {
     },[]);
 
     return (
-        <div className='grid drawGrid'>
+        <div className='grid'>
             {
                 grid.map((pixel, pixelIndex) =>
-                    <div className='drawPixel' style={{ width: 550 / cols - 2, height: 550 / rows - 2}} key={`${pixelIndex}`}></div>
+                    <div className='pixel' style={{ width: 550 / cols - 2, height: 550 / rows - 2}} key={`${pixelIndex}`}></div>
                 )
             }
         </div>
