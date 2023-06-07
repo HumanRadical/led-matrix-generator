@@ -1,28 +1,40 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 const Grid = ({cols, rows}) => {
-    const [grid, setGrid] = useState([]);
+    const [grid, setGrid] = useState([])
+    const [mouseDown, setMouseDown] = useState(false)
 
-    useEffect(()=> {
-        const defaultValue = 0;
+    useEffect(() => {
+        const defaultValue = 0
 
         // const newGrid = Array.from({length: rows}, () => Array(cols).fill(defaultValue));
         const newGrid = Array(cols * rows).fill(defaultValue);
-        setGrid(newGrid);
-    },[])
+        setGrid(newGrid)
+
+        document.addEventListener('mousedown', () => setMouseDown(true))
+        document.addEventListener('mouseup', () => setMouseDown(false))
+    }, [])
 
     const colorInPixel = event => {
         event.target.style.backgroundColor = "red"
     }
 
+    const colorInPixelIfMouseDown = event => {
+        if (mouseDown) {
+            colorInPixel(event)
+        }
+    }
+
     const pixels = grid.map((pixel, pixelIndex) =>
         <div 
             className='pixel' 
-            onClick={colorInPixel}
+            onMouseDown={colorInPixel}
+            onMouseMove={colorInPixelIfMouseDown}
             style={{ width: 550 / cols - 2, height: 550 / rows - 2}} 
             key={`${pixelIndex}`}
         ></div>
     )
+
 
     return (
         <div className='grid'>
@@ -31,4 +43,4 @@ const Grid = ({cols, rows}) => {
     );
 }
 
-export default Grid;
+export default Grid
