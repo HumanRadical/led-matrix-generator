@@ -4,7 +4,7 @@ import Grid from './Grid'
 const App = () => {
   return (
     <div className="App">
-      <Grid />
+      <Grid cols={16} rows={16} />
     </div>
   );
 }
