@@ -17,3 +17,29 @@ body {
   border: 1px solid white;
   background-color: black;
 }
+
+.settings {
+  margin: auto;
+  margin-top: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  width: 170px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.sizeSettings {
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  width: 170px;
+  justify-content: space-between;
+}
+
+.sizeBox {
+  border: 3px solid black;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-align: center;
+  width: 40px;
+}
