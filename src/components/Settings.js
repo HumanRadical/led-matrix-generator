@@ -1,15 +1,8 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
+import { SettingsContext } from "../context/SettingsContext"
 
 const Settings = () => {
-    const [cols, setCols] = useState(16)
-    const [rows, setRows] = useState(16)
-
-    const updateCols = event => {
-        setCols(event.target.value)
-    }
-    const updateRows = event => {
-        setRows(event.target.value)
-    }
+    const { cols, rows, updateCols, updateRows } = useContext(SettingsContext)
 
     return (
         <div className="settings">

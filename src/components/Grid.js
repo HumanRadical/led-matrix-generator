@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { SettingsContext } from '../context/SettingsContext'
 
-const Grid = ({cols, rows}) => {
+const Grid = () => {
+    const { cols, rows } = useContext(SettingsContext)
+
     const [grid, setGrid] = useState([])
     const [mouseDown, setMouseDown] = useState(false)
 
@@ -13,7 +16,7 @@ const Grid = ({cols, rows}) => {
 
         document.addEventListener('mousedown', () => setMouseDown(true))
         document.addEventListener('mouseup', () => setMouseDown(false))
-    }, [])
+    }, [cols, rows])
 
     const colorInPixel = event => {
         event.target.style.backgroundColor = "red"
