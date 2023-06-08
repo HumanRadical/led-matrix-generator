@@ -6,7 +6,6 @@ const Settings = () => {
 
     const updateCols = event => {
         setCols(event.target.value)
-        console.log(cols)
     }
     const updateRows = event => {
         setRows(event.target.value)
