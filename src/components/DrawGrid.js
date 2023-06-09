@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { SettingsContext } from '../context/SettingsContext'
 
-const Grid = () => {
+const DrawGrid = () => {
     const { cols, rows } = useContext(SettingsContext)
 
     const [grid, setGrid] = useState([])
@@ -46,4 +46,4 @@ const Grid = () => {
     );
 }
 
-export default Grid
+export default DrawGrid

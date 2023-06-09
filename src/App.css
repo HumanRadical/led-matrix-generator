@@ -2,6 +2,11 @@ body {
   background-color: antiquewhite;
 }
 
+.modeButtons {
+  text-align: center;
+  margin-top: 30px;
+}
+
 .grid {
   border: 5px solid black;
   margin: auto;
@@ -9,13 +14,23 @@ body {
   height: 550px;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 30px;
   background-color: white;
 }
 
 .pixel {
   border: 1px solid white;
   background-color: black;
+}
+
+.codeBoxContainer {
+  text-align: center;
+}
+
+.codeBox {
+  border: 5px solid black;
+  width: 550px;
+  height: 550px;
+  resize: none;
 }
 
 .settings {
