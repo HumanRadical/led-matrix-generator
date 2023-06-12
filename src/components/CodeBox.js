@@ -1,8 +1,8 @@
-const CodeBox = () => {
+const CodeBox = ({currentFrame}) => {
     return (
         <div className="codeBoxContainer">
             <textarea className="codeBox">
-                Hi
+                {currentFrame}
             </textarea>
         </div>
     )
