@@ -1,9 +1,7 @@
 const CodeBox = ({currentFrame}) => {
     return (
         <div className="codeBoxContainer">
-            <textarea className="codeBox">
-                {currentFrame}
-            </textarea>
+            <textarea className="codeBox" value={currentFrame} />
         </div>
     )
 }
