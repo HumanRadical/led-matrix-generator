@@ -1,18 +1,14 @@
 import { useState, useEffect, useContext } from 'react'
 import { SettingsContext } from '../context/SettingsContext'
 
-const DrawGrid = () => {
-    const { cols, rows } = useContext(SettingsContext)
+const DrawGrid = ({currentFrame}) => {
+    const { cols, rows, convertColorStringToArray } = useContext(SettingsContext)
 
     const [grid, setGrid] = useState([])
     const [mouseDown, setMouseDown] = useState(false)
 
     useEffect(() => {
-        const defaultValue = 0
-
-        // const newGrid = Array.from({length: rows}, () => Array(cols).fill(defaultValue));
-        const newGrid = Array(cols * rows).fill(defaultValue);
-        setGrid(newGrid)
+        setGrid(convertColorStringToArray(currentFrame))
 
         document.addEventListener('mousedown', () => setMouseDown(true))
         document.addEventListener('mouseup', () => setMouseDown(false))
@@ -33,7 +29,7 @@ const DrawGrid = () => {
             className='pixel' 
             onMouseDown={colorInPixel}
             onMouseMove={colorInPixelIfMouseDown}
-            style={{ width: 550 / cols - 2, height: 550 / rows - 2}} 
+            style={{ width: 550 / cols - 2, height: 550 / rows - 2, backgroundColor: pixel}} 
             key={`${pixelIndex}`}
         ></div>
     )
