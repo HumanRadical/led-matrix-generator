@@ -41,13 +41,11 @@ const App = () => {
 	const decreaseCurrentFrameIndex = () => {
 		if (frames[currentFrameIndex - 1]) {
 			setCurrentFrameIndex(prevFrameIndex => prevFrameIndex - 1)
-			console.log(currentFrameIndex)
 		}
 	}
 	const increaseCurrentFrameIndex = () => {
 		if (frames[currentFrameIndex + 1]) {
 			setCurrentFrameIndex(prevFrameIndex => prevFrameIndex + 1)
-			console.log(currentFrameIndex)
 		}
 	}
 
