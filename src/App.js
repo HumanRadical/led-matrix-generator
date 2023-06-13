@@ -1,23 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react'
 import './App.css';
 import presets from './presets.json'
 import arrowLeft from './images/arrow-left.svg'
 import arrowRight from './images/arrow-right.svg'
+import { FramesContext } from './context/FramesContext'
 import DrawGrid from './components/DrawGrid'
 import Settings from './components/Settings'
-import CodeBox from './components/CodeBox';
-import ColorPresets from './components/ColorPresets';
-import { FramesContext } from './context/FramesContext';
+import CodeBox from './components/CodeBox'
+import ColorPresets from './components/ColorPresets'
 
 const App = () => {
 	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2])
 	const [currentFrameIndex, setCurrentFrameIndex] = useState(0)
 	const [currentMode, setCurrentMode] = useState('draw')
+	const [mouseDown, setMouseDown] = useState(false)
 	const [currentDrawColor, setCurrentDrawColor] = useState('#ff0000')
 	const [customColor, setCustomColor] = useState('#000000')
 	const [cols, setCols] = useState(16)
 	const [rows, setRows] = useState(16)
 	const [snaked, setSnaked] = useState(true)
+
+    useEffect(() => {
+        document.addEventListener('mousedown', () => setMouseDown(true))
+        document.addEventListener('mouseup', () => setMouseDown(false))
+
+		return () => {
+			document.removeEventListener('mousedown', () => setMouseDown(true))
+        	document.removeEventListener('mouseup', () => setMouseDown(false))
+		}
+    }, [])
 
 	const snakeColors = (colorArray) => {
 		const newArray = []
@@ -110,13 +121,14 @@ const App = () => {
 					value={{
 						convertColorStringToArray,
 						convertColorArrayToString,
+						frames,
+						mouseDown,
 						cols,
 						setCols,
 						rows,
 						setRows,
 						snaked,
 						setSnaked,
-						frames,
 						setFrames,
 						currentFrameIndex,
 						setCurrentFrameIndex,

@@ -1,14 +1,15 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useContext } from 'react'
 import { FramesContext } from '../context/FramesContext'
 
 const DrawGrid = () => {
     const {
         convertColorStringToArray,
         convertColorArrayToString,
+        frames,
+        mouseDown,
         cols,
         rows,
         snaked,
-        frames,
         setFrames,
         currentFrameIndex,
         currentDrawColor,
@@ -16,12 +17,6 @@ const DrawGrid = () => {
     } = useContext(FramesContext)
 
     const [grid, setGrid] = useState(convertColorStringToArray(frames[currentFrameIndex], snaked))
-    const [mouseDown, setMouseDown] = useState(false)
-
-    useEffect(() => {
-        document.addEventListener('mousedown', () => setMouseDown(true))
-        document.addEventListener('mouseup', () => setMouseDown(false))
-    }, [])
 
     const colorInPixel = (event, index) => {
         const pixelColor = currentDrawColor === 'custom' ? customColor : currentDrawColor
