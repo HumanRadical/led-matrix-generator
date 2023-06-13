@@ -84,7 +84,7 @@ const App = () => {
 	}
 	
 	return (
-		<div className='App'>
+		<>
 			<form className='modeButtons'>
 				<button className='drawButton' onClick={setDrawMode}>Draw</button>
 				<button className='codeButton' onClick={setCodeMode}>Code</button>
@@ -97,7 +97,7 @@ const App = () => {
 					</section>
 					<Settings />
 				</SettingsContext.Provider>
-		</div>
+		</>
 	)
 }
 

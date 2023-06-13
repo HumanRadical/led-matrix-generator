@@ -36,9 +36,11 @@ const DrawGrid = ({currentFrame}) => {
 
 
     return (
-        <div className='grid'>
-            {pixels}
-        </div>
+        <>
+            <div className='grid'>
+                {pixels}
+            </div>
+        </>
     );
 }
 
