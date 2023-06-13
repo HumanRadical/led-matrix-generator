@@ -106,24 +106,26 @@ const App = () => {
 				<button className='drawButton' onClick={setDrawMode}>Draw</button>
 				<button className='codeButton' onClick={setCodeMode}>Code</button>
 			</form>
-				<FramesContext.Provider value={{
-					convertColorStringToArray,
-					convertColorArrayToString,
-					cols,
-					setCols,
-					rows,
-					setRows,
-					snaked,
-					setSnaked,
-					frames,
-					setFrames,
-					currentFrameIndex,
-					setCurrentFrameIndex,
-					currentDrawColor,
-					setCurrentDrawColor,
-					customColor,
-					setCustomColor
-				}}>
+				<FramesContext.Provider 
+					value={{
+						convertColorStringToArray,
+						convertColorArrayToString,
+						cols,
+						setCols,
+						rows,
+						setRows,
+						snaked,
+						setSnaked,
+						frames,
+						setFrames,
+						currentFrameIndex,
+						setCurrentFrameIndex,
+						currentDrawColor,
+						setCurrentDrawColor,
+						customColor,
+						setCustomColor
+					}}
+				>
 					<section className='gridArea'>
 						<img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
 						<CurrentModeDisplay />

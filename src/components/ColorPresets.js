@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { FramesContext } from '../context/FramesContext'
 
 const ColorPresets = () => {

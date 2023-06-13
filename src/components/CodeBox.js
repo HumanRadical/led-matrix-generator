@@ -1,5 +1,5 @@
-import { useContext } from "react"
-import { FramesContext } from "../context/FramesContext"
+import { useContext } from 'react'
+import { FramesContext } from '../context/FramesContext'
 
 const CodeBox = () => {
     const {
@@ -18,7 +18,7 @@ const CodeBox = () => {
 
     return (
         <>
-            <textarea className="codeBox" defaultValue={frames[currentFrameIndex]} onChange={updateCurrentFrame} />
+            <textarea className='codeBox' defaultValue={frames[currentFrameIndex]} onChange={updateCurrentFrame} />
         </>
     )
 }

@@ -1,5 +1,5 @@
-import { useContext } from "react"
-import { FramesContext } from "../context/FramesContext"
+import { useContext } from 'react'
+import { FramesContext } from '../context/FramesContext'
 
 const Settings = () => {
     const {
@@ -12,32 +12,32 @@ const Settings = () => {
     } = useContext(FramesContext)
 
     return (
-        <div className="settings">
-            <label className="sizeSettings">
+        <div className='settings'>
+            <label className='sizeSettings'>
                 Size:
                 <input 
-                    className="sizeBox" 
+                    className='sizeBox' 
                     onChange={e => setCols(e.target.value)} 
                     value={cols} 
-                    type="number" 
-                    min="1" 
-                    max="99" 
+                    type='number' 
+                    min='1' 
+                    max='99' 
                 /> 
                 x
                 <input 
-                    className="sizeBox" 
+                    className='sizeBox' 
                     onChange={e => setRows(e.target.value)} 
                     value={rows} 
-                    type="number" 
-                    min="1" 
-                    max="99" 
+                    type='number' 
+                    min='1' 
+                    max='99' 
                 />
             </label>
-            <label className="snakeSetting">
+            <label className='snakeSetting'>
                 Snake mode:
                 <input 
-                    className="snakeBox" 
-                    type="checkbox" 
+                    className='snakeBox' 
+                    type='checkbox' 
                     onChange={() => setSnaked(prevSnaked => !prevSnaked)} 
                     checked={snaked} 
                 />
