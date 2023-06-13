@@ -2,7 +2,12 @@ import { useState, useEffect, useContext } from 'react'
 import { FramesContext } from '../context/FramesContext'
 
 const DrawGrid = ({currentFrame}) => {
-    const { cols, rows, snaked, convertColorStringToArray } = useContext(FramesContext)
+    const {
+        cols,
+        rows,
+        snaked,
+        convertColorStringToArray
+    } = useContext(FramesContext)
 
     const [grid, setGrid] = useState([])
     const [mouseDown, setMouseDown] = useState(false)

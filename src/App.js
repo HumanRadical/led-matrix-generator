@@ -91,7 +91,15 @@ const App = () => {
 				<button className='drawButton' onClick={setDrawMode}>Draw</button>
 				<button className='codeButton' onClick={setCodeMode}>Code</button>
 			</form>
-				<FramesContext.Provider value={{ cols, setCols, rows, setRows, snaked, setSnaked, convertColorStringToArray }}>
+				<FramesContext.Provider value={{
+					cols,
+					setCols,
+					rows,
+					setRows,
+					snaked,
+					setSnaked,
+					convertColorStringToArray 
+				}}>
 					<section className='gridArea'>
 						<img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
 						<CurrentModeDisplay />

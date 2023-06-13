@@ -2,7 +2,14 @@ import { useContext } from "react"
 import { FramesContext } from "../context/FramesContext"
 
 const Settings = () => {
-    const { cols, rows, setCols, setRows, snaked, setSnaked } = useContext(FramesContext)
+    const {
+        cols,
+        rows,
+        setCols,
+        setRows,
+        snaked,
+        setSnaked
+    } = useContext(FramesContext)
 
     return (
         <div className="settings">
