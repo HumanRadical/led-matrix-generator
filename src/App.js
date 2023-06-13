@@ -85,6 +85,8 @@ const App = () => {
 	
 	return (
 		<>
+			<h1 className='title'>LED Matrix Generator</h1>
+			<h2 className='frameTitle'>Frame {currentFrameIndex + 1}</h2>
 			<form className='modeButtons'>
 				<button className='drawButton' onClick={setDrawMode}>Draw</button>
 				<button className='codeButton' onClick={setCodeMode}>Code</button>
