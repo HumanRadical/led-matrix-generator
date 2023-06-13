@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import presets from './presets.json'
 import arrowLeft from './images/arrow-left.svg'
@@ -38,7 +38,7 @@ const App = () => {
 		return finalArray
 	}
 
-	const convertColorStringToArray = (colorString, snaked = false, prefix = '#') => {
+	const convertColorStringToArray = (colorString, snaked, prefix = '#') => {
 		const colorArray = colorString
 			.replaceAll(' ', '')
 			.split(',')
@@ -54,6 +54,18 @@ const App = () => {
 			return snakeColors(colorArray)
 		}
 		return colorArray
+	}
+
+	const convertColorArrayToString = (colorArray, snaked, prefix = '0x') => {
+		if (snaked) {
+			colorArray = snakeColors(colorArray)
+		}
+
+		const colorString = colorArray
+			.join()
+			.replaceAll('#', prefix)
+
+		return colorString
 	}
 
 	const setDrawMode = event => {
@@ -93,6 +105,7 @@ const App = () => {
 			</form>
 				<FramesContext.Provider value={{
 					convertColorStringToArray,
+					convertColorArrayToString,
 					cols,
 					setCols,
 					rows,
