@@ -10,7 +10,9 @@ const DrawGrid = () => {
         snaked,
         frames,
         setFrames,
-        currentFrameIndex
+        currentFrameIndex,
+        currentDrawColor,
+        customColor
     } = useContext(FramesContext)
 
     const [grid, setGrid] = useState(convertColorStringToArray(frames[currentFrameIndex], snaked))
@@ -22,11 +24,13 @@ const DrawGrid = () => {
     }, [])
 
     const colorInPixel = (event, index) => {
-        event.target.style.backgroundColor = "#ff0000"
+        const pixelColor = currentDrawColor === 'custom' ? customColor : currentDrawColor
+        
+        event.target.style.backgroundColor = pixelColor
 
         setGrid(prevGrid => {
             const newGrid = prevGrid
-            newGrid[index] = "#ff0000"
+            newGrid[index] = pixelColor
             return newGrid
         })
         

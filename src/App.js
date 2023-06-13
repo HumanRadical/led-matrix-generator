@@ -7,14 +7,17 @@ import DrawGrid from './components/DrawGrid'
 import Settings from './components/Settings'
 import CodeBox from './components/CodeBox';
 import { FramesContext } from './context/FramesContext';
+import ColorPresets from './components/ColorPresets';
 
 const App = () => {
+	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2])
+	const [currentFrameIndex, setCurrentFrameIndex] = useState(0)
+	const [currentMode, setCurrentMode] = useState('draw')
+	const [currentDrawColor, setCurrentDrawColor] = useState('#ff0000')
+	const [customColor, setCustomColor] = useState('#000000')
 	const [cols, setCols] = useState(16)
 	const [rows, setRows] = useState(16)
 	const [snaked, setSnaked] = useState(true)
-	const [currentMode, setCurrentMode] = useState('draw')
-	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2])
-	const [currentFrameIndex, setCurrentFrameIndex] = useState(0)
 
 	const snakeColors = (colorArray) => {
 		const newArray = []
@@ -115,13 +118,20 @@ const App = () => {
 					frames,
 					setFrames,
 					currentFrameIndex,
-					setCurrentFrameIndex
+					setCurrentFrameIndex,
+					currentDrawColor,
+					setCurrentDrawColor,
+					customColor,
+					setCustomColor
 				}}>
 					<section className='gridArea'>
 						<img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
 						<CurrentModeDisplay />
 						<img alt='' src={arrowRight} className='arrowRight' onClick={increaseCurrentFrameIndex} />
 					</section>
+					{
+						currentMode === 'draw' && <ColorPresets />
+					}
 					<Settings />
 				</FramesContext.Provider>
 		</>

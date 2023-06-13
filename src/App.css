@@ -65,6 +65,87 @@ body {
   resize: none;
 }
 
+.colorPresetForm {
+  margin: auto;
+  margin-top: 20px;
+  padding-right: 35px;
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.colorPresets {
+  position: relative;
+  padding-left: 30px;
+}
+
+.colorPresets input[type="radio"] {
+  display: none;
+}
+
+.colorPresets span {
+  height: 40px;
+  width: 40px;
+  margin: 3px;
+  border-radius: 10px;
+  display: block;
+  cursor: pointer;
+}
+
+.colorPresets input[type="radio"]:checked ~ span {
+  margin: 0;
+  border: 3px solid black;
+}
+
+.redPreset {
+  background-color: red;
+}
+
+.bluePreset {
+  background-color: blue;
+}
+
+.yellowPreset {
+  background-color: yellow;
+}
+
+.limePreset {
+  background-color: lime;
+}
+
+.whitePreset {
+  background-color: white;
+}
+
+.blackPreset {
+  background-color: black;
+}
+
+.customPreset span {
+  width: 80px;
+  padding-right: 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+}
+
+.colorPicker {
+  position: absolute;
+  top: 0;
+  left: 113px;
+  width: 40px;
+  height: 40px;
+  margin-top: 3px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: white;
+  border: 3px solid white;
+  cursor: pointer;
+}
+
 .settings {
   margin: auto;
   margin-top: 12px;
