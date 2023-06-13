@@ -154,7 +154,7 @@ body {
   flex-wrap: wrap;
 }
 
-.settings > label {
+.settings label {
   font-size: 1.25rem;
   font-weight: 600;
   margin: 10px;
