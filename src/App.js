@@ -11,6 +11,7 @@ import { SettingsContext } from './context/SettingsContext';
 const App = () => {
 	const [cols, setCols] = useState(16)
 	const [rows, setRows] = useState(16)
+	const [snaked, setSnaked] = useState(true)
 	const [currentMode, setCurrentMode] = useState('draw')
 	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2])
 	const [currentFrameIndex, setCurrentFrameIndex] = useState(0)
@@ -26,13 +27,6 @@ const App = () => {
 				}
 				return color.replaceAll(hexColorRegEx, `${prefix}$1`);
 			})
-	}
-
-	const updateCols = event => {
-		setCols(event.target.value)
-	}
-	const updateRows = event => {
-		setRows(event.target.value)
 	}
 
 	const setDrawMode = event => {
@@ -70,7 +64,7 @@ const App = () => {
 				<button className='drawButton' onClick={setDrawMode}>Draw</button>
 				<button className='codeButton' onClick={setCodeMode}>Code</button>
 			</form>
-				<SettingsContext.Provider value={{ cols, rows, updateCols, updateRows, convertColorStringToArray }}>
+				<SettingsContext.Provider value={{ cols, rows, setCols, setRows, setSnaked, convertColorStringToArray }}>
 					<section className='gridArea'>
 						<img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
 						<CurrentModeDisplay />
