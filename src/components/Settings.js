@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { SettingsContext } from "../context/SettingsContext"
+import { FramesContext } from "../context/FramesContext"
 
 const Settings = () => {
-    const { cols, rows, setCols, setRows, snaked, setSnaked } = useContext(SettingsContext)
+    const { cols, rows, setCols, setRows, snaked, setSnaked } = useContext(FramesContext)
 
     return (
         <div className="settings">

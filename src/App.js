@@ -6,7 +6,7 @@ import arrowRight from './images/arrow-right.svg'
 import DrawGrid from './components/DrawGrid'
 import Settings from './components/Settings'
 import CodeBox from './components/CodeBox';
-import { SettingsContext } from './context/SettingsContext';
+import { FramesContext } from './context/FramesContext';
 
 const App = () => {
 	const [cols, setCols] = useState(16)
@@ -91,14 +91,14 @@ const App = () => {
 				<button className='drawButton' onClick={setDrawMode}>Draw</button>
 				<button className='codeButton' onClick={setCodeMode}>Code</button>
 			</form>
-				<SettingsContext.Provider value={{ cols, setCols, rows, setRows, snaked, setSnaked, convertColorStringToArray }}>
+				<FramesContext.Provider value={{ cols, setCols, rows, setRows, snaked, setSnaked, convertColorStringToArray }}>
 					<section className='gridArea'>
 						<img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
 						<CurrentModeDisplay />
 						<img alt='' src={arrowRight} className='arrowRight' onClick={increaseCurrentFrameIndex} />
 					</section>
 					<Settings />
-				</SettingsContext.Provider>
+				</FramesContext.Provider>
 		</>
 	)
 }
