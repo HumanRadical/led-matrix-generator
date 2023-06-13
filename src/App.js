@@ -78,9 +78,9 @@ const App = () => {
 
 	const CurrentModeDisplay = () => {
 		if (currentMode === 'draw') {
-			return <DrawGrid currentFrame={frames[currentFrameIndex]} />
+			return <DrawGrid />
 		}
-		return <CodeBox currentFrame={frames[currentFrameIndex]} />
+		return <CodeBox />
 	}
 	
 	return (
@@ -92,13 +92,17 @@ const App = () => {
 				<button className='codeButton' onClick={setCodeMode}>Code</button>
 			</form>
 				<FramesContext.Provider value={{
+					convertColorStringToArray,
 					cols,
 					setCols,
 					rows,
 					setRows,
 					snaked,
 					setSnaked,
-					convertColorStringToArray 
+					frames,
+					setFrames,
+					currentFrameIndex,
+					setCurrentFrameIndex
 				}}>
 					<section className='gridArea'>
 						<img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />

@@ -1,23 +1,25 @@
 import { useState, useEffect, useContext } from 'react'
 import { FramesContext } from '../context/FramesContext'
 
-const DrawGrid = ({currentFrame}) => {
+const DrawGrid = () => {
     const {
+        convertColorStringToArray,
         cols,
         rows,
         snaked,
-        convertColorStringToArray
+        frames,
+        currentFrameIndex
     } = useContext(FramesContext)
 
     const [grid, setGrid] = useState([])
     const [mouseDown, setMouseDown] = useState(false)
 
     useEffect(() => {
-        setGrid(convertColorStringToArray(currentFrame, snaked))
-
+        setGrid(convertColorStringToArray(frames[currentFrameIndex], snaked))
+        
         document.addEventListener('mousedown', () => setMouseDown(true))
         document.addEventListener('mouseup', () => setMouseDown(false))
-    }, [cols, rows])
+    }, [])
 
     const colorInPixel = event => {
         event.target.style.backgroundColor = "red"
