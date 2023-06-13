@@ -31,7 +31,7 @@ const Settings = () => {
                 <input 
                     className="snakeBox" 
                     type="checkbox" 
-                    onClick={() => setSnaked(prevSnaked => !prevSnaked)} 
+                    onChange={() => setSnaked(prevSnaked => !prevSnaked)} 
                     checked={snaked} 
                 />
             </label>
