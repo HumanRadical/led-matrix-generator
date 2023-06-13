@@ -6,8 +6,8 @@ import arrowRight from './images/arrow-right.svg'
 import DrawGrid from './components/DrawGrid'
 import Settings from './components/Settings'
 import CodeBox from './components/CodeBox';
-import { FramesContext } from './context/FramesContext';
 import ColorPresets from './components/ColorPresets';
+import { FramesContext } from './context/FramesContext';
 
 const App = () => {
 	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2])
