@@ -16,8 +16,30 @@ const App = () => {
 	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2])
 	const [currentFrameIndex, setCurrentFrameIndex] = useState(0)
 
-	const convertColorStringToArray = (colorString, prefix = '#') => {
-		return colorString
+	const snakeColors = (colorArray) => {
+		const newArray = []
+		let row = []
+		colorArray.forEach((color, index) => {
+			if (index !== 0 && index % cols === 0) {
+				if (newArray.length % 2 === 1) {
+					row.reverse()
+				}
+				newArray.push(row)
+				row = []
+			}
+			row.push(color)
+		})
+		if (newArray.length % 2 === 1) {
+			row.reverse()
+		}
+		newArray.push(row)
+	
+		const finalArray = [].concat(...newArray)
+		return finalArray
+	}
+
+	const convertColorStringToArray = (colorString, snaked = false, prefix = '#') => {
+		const colorArray = colorString
 			.replaceAll(' ', '')
 			.split(',')
 			.map(color => {
@@ -27,6 +49,11 @@ const App = () => {
 				}
 				return color.replaceAll(hexColorRegEx, `${prefix}$1`);
 			})
+		
+		if (snaked) {
+			return snakeColors(colorArray)
+		}
+		return colorArray
 	}
 
 	const setDrawMode = event => {
@@ -62,7 +89,7 @@ const App = () => {
 				<button className='drawButton' onClick={setDrawMode}>Draw</button>
 				<button className='codeButton' onClick={setCodeMode}>Code</button>
 			</form>
-				<SettingsContext.Provider value={{ cols, rows, setCols, setRows, setSnaked, convertColorStringToArray }}>
+				<SettingsContext.Provider value={{ cols, setCols, rows, setRows, snaked, setSnaked, convertColorStringToArray }}>
 					<section className='gridArea'>
 						<img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
 						<CurrentModeDisplay />
