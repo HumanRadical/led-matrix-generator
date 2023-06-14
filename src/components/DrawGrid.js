@@ -42,15 +42,18 @@ const DrawGrid = () => {
         }
     }
 
-    const pixels = grid.map((pixel, pixelIndex) =>
-        <div 
+    const pixels = grid.map((pixel, pixelIndex) => {
+        if (pixel === '<Error>') {
+            return <img src='../images/error_icon.svg' className='errorPixel' alt='' />
+        }
+        return <div 
             className='pixel' 
             onMouseDown={e => colorInPixel(e, pixelIndex)}
             onMouseMove={e => colorInPixelIfMouseDown(e, pixelIndex)}
             style={{ width: 550 / cols - 2, height: 550 / rows - 2, backgroundColor: pixel}} 
             key={`${pixelIndex}`}
         ></div>
-    )
+    })
 
 
     return (
