@@ -100,8 +100,6 @@ const App = () => {
 			setCurrentFrameIndex(prevFrameIndex => prevFrameIndex + 1)
 		}
 	}
-
-	
 	
 	return (
 		<>
@@ -111,37 +109,37 @@ const App = () => {
 				<button className='drawButton' onClick={setDrawMode}>Draw</button>
 				<button className='codeButton' onClick={setCodeMode}>Code</button>
 			</form>
-				<FramesContext.Provider 
-					value={{
-						convertColorStringToArray,
-						convertColorArrayToString,
-						frames,
-						setFrames,
-						currentFrameIndex,
-						setCurrentFrameIndex,
-						mouseDown,
-						cols,
-						setCols,
-						rows,
-						setRows,
-						snaked,
-						setSnaked,
-						currentDrawColor,
-						setCurrentDrawColor,
-						customColor,
-						setCustomColor
-					}}
-				>
-					<section className='gridArea'>
-						<img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
-						<CurrentModeDisplay currentMode={currentMode} />
-						<img alt='' src={arrowRight} className='arrowRight' onClick={increaseCurrentFrameIndex} />
-					</section>
-					{
-						currentMode === 'draw' && <ColorPresets />
-					}
-					<Settings />
-				</FramesContext.Provider>
+			<FramesContext.Provider 
+				value={{
+					convertColorStringToArray,
+					convertColorArrayToString,
+					frames,
+					setFrames,
+					currentFrameIndex,
+					setCurrentFrameIndex,
+					mouseDown,
+					cols,
+					setCols,
+					rows,
+					setRows,
+					snaked,
+					setSnaked,
+					currentDrawColor,
+					setCurrentDrawColor,
+					customColor,
+					setCustomColor
+				}}
+			>
+				<section className='gridArea'>
+					<img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
+					<CurrentModeDisplay currentMode={currentMode} />
+					<img alt='' src={arrowRight} className='arrowRight' onClick={increaseCurrentFrameIndex} />
+				</section>
+				{
+					currentMode === 'draw' && <ColorPresets />
+				}
+				<Settings />
+			</FramesContext.Provider>
 		</>
 	)
 }
