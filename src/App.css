@@ -45,6 +45,10 @@ body {
   cursor: pointer;
 }
 
+.noArrow {
+  cursor: default;
+}
+
 .grid {
   border: 5px solid black;
   width: 550px;

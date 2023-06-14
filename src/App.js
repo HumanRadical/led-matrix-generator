@@ -131,9 +131,17 @@ const App = () => {
 				}}
 			>
 				<section className='gridArea'>
-					<img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
+					{
+						frames[currentFrameIndex - 1] 
+						? <img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
+						: <div className='arrowLeft noArrow'></div>
+					}
 					<CurrentModeDisplay currentMode={currentMode} />
-					<img alt='' src={arrowRight} className='arrowRight' onClick={increaseCurrentFrameIndex} />
+					{
+						frames[currentFrameIndex + 1] 
+						? <img alt='' src={arrowRight} className='arrowRight' onClick={increaseCurrentFrameIndex} />
+						: <div className='arrowRight noArrow'></div>
+					}
 				</section>
 				{
 					currentMode === 'draw' && <ColorPresets />
