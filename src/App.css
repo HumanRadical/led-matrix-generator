@@ -38,7 +38,7 @@ body {
   align-items: center;
 }
 
-.arrowLeft, .arrowRight {
+.arrow {
   width: 100px;
   height: 125px;
   margin: 25px;
@@ -47,6 +47,11 @@ body {
 
 .noArrow {
   cursor: default;
+}
+
+.newFrame {
+  align-self: flex-start;
+  height: 80px;
 }
 
 .grid {

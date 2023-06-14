@@ -3,6 +3,7 @@ import './App.css';
 import presets from './presets.json'
 import arrowLeft from './images/arrow-left.svg'
 import arrowRight from './images/arrow-right.svg'
+import plusIcon from './images/plus.svg'
 import { FramesContext } from './context/FramesContext'
 import Settings from './components/Settings'
 import ColorPresets from './components/ColorPresets'
@@ -94,6 +95,13 @@ const App = () => {
 			setCurrentFrameIndex(prevFrameIndex => prevFrameIndex + 1)
 		}
 	}
+	const addNewFrame = () => {
+		setFrames(prevFrames => [
+			...prevFrames,
+			presets.empty
+		])
+		setCurrentFrameIndex(prevFrameIndex => prevFrameIndex + 1)
+	}
 	
 	return (
 		<>
@@ -127,14 +135,14 @@ const App = () => {
 				<section className='gridArea'>
 					{
 						frames[currentFrameIndex - 1] 
-						? <img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
-						: <div className='arrowLeft noArrow'></div>
+						? <img alt='Previous Frame' src={arrowLeft} className='arrow' onClick={decreaseCurrentFrameIndex} />
+						: <div className='arrow noArrow'></div>
 					}
 					<CurrentModeDisplay currentMode={currentMode} />
 					{
 						frames[currentFrameIndex + 1] 
-						? <img alt='' src={arrowRight} className='arrowRight' onClick={increaseCurrentFrameIndex} />
-						: <div className='arrowRight noArrow'></div>
+						? <img alt='Next Frame' src={arrowRight} className='arrow' onClick={increaseCurrentFrameIndex} />
+						: <img alt='New Frame' src={plusIcon} className='arrow newFrame' onClick={addNewFrame} />
 					}
 				</section>
 				{
