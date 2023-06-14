@@ -50,18 +50,12 @@ const App = () => {
 		const finalArray = [].concat(...newArray)
 		return finalArray
 	}
-
-	const convertColorStringToArray = (colorString, snaked, prefix = '#') => {
+	
+	const convertColorStringToArray = (colorString, snaked) => {
 		const colorArray = colorString
 			.replaceAll(' ', '')
+			.replaceAll('0x', '#')
 			.split(',')
-			.map(color => {
-				const hexColorRegEx = /0x([\da-f]+)/ig
-				if (!hexColorRegEx.test(color)) {
-					return '<Error>';
-				}
-				return color.replaceAll(hexColorRegEx, `${prefix}$1`);
-			})
 		
 		if (snaked) {
 			return snakeColors(colorArray)
@@ -127,7 +121,7 @@ const App = () => {
 					currentDrawColor,
 					setCurrentDrawColor,
 					customColor,
-					setCustomColor
+					setCustomColor,
 				}}
 			>
 				<section className='gridArea'>
