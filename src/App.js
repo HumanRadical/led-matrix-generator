@@ -4,10 +4,9 @@ import presets from './presets.json'
 import arrowLeft from './images/arrow-left.svg'
 import arrowRight from './images/arrow-right.svg'
 import { FramesContext } from './context/FramesContext'
-import DrawGrid from './components/DrawGrid'
 import Settings from './components/Settings'
-import CodeBox from './components/CodeBox'
 import ColorPresets from './components/ColorPresets'
+import CurrentModeDisplay from './components/CurrentModeDisplay';
 
 const App = () => {
 	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2])
@@ -102,12 +101,7 @@ const App = () => {
 		}
 	}
 
-	const CurrentModeDisplay = () => {
-		if (currentMode === 'draw') {
-			return <DrawGrid />
-		}
-		return <CodeBox />
-	}
+	
 	
 	return (
 		<>
@@ -140,7 +134,7 @@ const App = () => {
 				>
 					<section className='gridArea'>
 						<img alt='' src={arrowLeft} className='arrowLeft' onClick={decreaseCurrentFrameIndex} />
-						<CurrentModeDisplay />
+						<CurrentModeDisplay currentMode={currentMode} />
 						<img alt='' src={arrowRight} className='arrowRight' onClick={increaseCurrentFrameIndex} />
 					</section>
 					{
