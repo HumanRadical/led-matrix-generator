@@ -32,26 +32,27 @@ body {
 }
 
 .gridArea {
-  margin: auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  height: 560px;
 }
 
-.arrow {
+.arrowContainer {
   width: 100px;
-  height: 125px;
-  margin: 25px;
+  height: 50%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.arrowButton, .newFrameButton {
   cursor: pointer;
 }
 
-.noArrow {
-  cursor: default;
-}
-
-.newFrame {
-  align-self: flex-start;
-  height: 80px;
+.newFrameButton {
+  height: 50px;
 }
 
 .grid {

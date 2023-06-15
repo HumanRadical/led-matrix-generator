@@ -95,11 +95,23 @@ const App = () => {
 			setCurrentFrameIndex(prevFrameIndex => prevFrameIndex + 1)
 		}
 	}
-	const addNewFrame = () => {
-		setFrames(prevFrames => [
-			...prevFrames,
-			presets.empty
-		])
+
+	const addNewFrameRight = () => {
+		const newFrames = Array.from(frames)
+		newFrames.splice(currentFrameIndex + 1, 0, presets.empty)
+		setFrames(prevFrames => {
+			const newFrames = prevFrames
+			newFrames.splice(currentFrameIndex + 1, 0, presets.empty)
+			return newFrames
+		})
+		setCurrentFrameIndex(prevFrameIndex => prevFrameIndex + 1)
+	}
+	const addNewFrameLeft = () => {
+		setFrames(prevFrames => {
+			const newFrames = prevFrames
+			newFrames.splice(currentFrameIndex, 0, presets.empty)
+			return newFrames
+		})
 		setCurrentFrameIndex(prevFrameIndex => prevFrameIndex + 1)
 	}
 	
@@ -133,17 +145,21 @@ const App = () => {
 				}}
 			>
 				<section className='gridArea'>
-					{
-						frames[currentFrameIndex - 1] 
-						? <img alt='Previous Frame' src={arrowLeft} className='arrow' onClick={decreaseCurrentFrameIndex} />
-						: <div className='arrow noArrow'></div>
-					}
+					<div className='arrowContainer'>
+						<img alt='New Frame' src={plusIcon} className='newFrameButton' onClick={addNewFrameLeft} />
+						{
+							frames[currentFrameIndex - 1] 
+							&& <img alt='Previous Frame' src={arrowLeft} className='arrowButton' onClick={decreaseCurrentFrameIndex} />
+						}
+					</div>
 					<CurrentModeDisplay currentMode={currentMode} />
-					{
-						frames[currentFrameIndex + 1] 
-						? <img alt='Next Frame' src={arrowRight} className='arrow' onClick={increaseCurrentFrameIndex} />
-						: <img alt='New Frame' src={plusIcon} className='arrow newFrame' onClick={addNewFrame} />
-					}
+					<div className='arrowContainer'>
+						<img alt='New Frame' src={plusIcon} className='newFrameButton' onClick={addNewFrameRight} />
+						{
+							frames[currentFrameIndex + 1] 
+							&& <img alt='Next Frame' src={arrowRight} className='arrowButton' onClick={increaseCurrentFrameIndex} />
+						}
+					</div>
 				</section>
 				{
 					currentMode === 'draw' && <ColorPresets />

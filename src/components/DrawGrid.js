@@ -7,17 +7,18 @@ const DrawGrid = () => {
         convertColorStringToArray,
         convertColorArrayToString,
         frames,
+        setFrames,
+        currentFrameIndex,
+        setCurrentFrameIndex,
         mouseDown,
         cols,
         rows,
         snaked,
-        setFrames,
-        currentFrameIndex,
         currentDrawColor,
         customColor,
     } = useContext(FramesContext)
     
-    const [grid, setGrid] = useState(convertColorStringToArray(frames[currentFrameIndex], snaked))
+    const [grid, setGrid] = useState([])
     
     const updatePixelColors = () => {
         return grid.map((pixel, pixelIndex) => {
@@ -34,7 +35,7 @@ const DrawGrid = () => {
                 src={errorIcon} 
                 className='pixel'
                 style={{ width: 550 / cols - 2, height: 550 / rows - 2}} 
-                alt=''
+                alt='Invalid Pixel'
                 key={pixelIndex}
             />
         })
@@ -42,11 +43,11 @@ const DrawGrid = () => {
     
     let pixels = updatePixelColors()
 
+    //NEED TO FIGURE OUT HOW TO RUN THIS WHEN FRAME IS ADDED WITHOUT CHANGING CURRENTFRAMEINDEX
     useEffect(() => {
         setGrid(convertColorStringToArray(frames[currentFrameIndex], snaked))
         pixels = updatePixelColors()
-    }, [currentFrameIndex, snaked])
-
+    }, [frames, currentFrameIndex, snaked])
 
     const colorInPixel = (event, index) => {
         const pixelColor = currentDrawColor === 'custom' ? customColor : currentDrawColor
