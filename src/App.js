@@ -8,6 +8,7 @@ import { FramesContext } from './context/FramesContext'
 import Settings from './components/Settings'
 import ColorPresets from './components/ColorPresets'
 import CurrentModeDisplay from './components/CurrentModeDisplay';
+import ArduinoCodeBox from './components/ArduinoCodeBox';
 
 const App = () => {
 	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2, presets.qbert1, presets.qbert2])
@@ -168,6 +169,7 @@ const App = () => {
 					currentMode === 'draw' && <ColorPresets />
 				}
 				<Settings />
+				<ArduinoCodeBox />
 			</FramesContext.Provider>
 		</>
 	)

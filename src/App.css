@@ -200,3 +200,8 @@ body {
 .intervalSettings input {
   width: 50px;
 }
+
+.arduinoCodeBox {
+  width: 700px;
+  margin: 50px;
+}
