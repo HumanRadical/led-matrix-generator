@@ -212,11 +212,22 @@ body {
   background-color: orangered;
   border: 5px solid black;
   border-radius: 8px;
-  transition-duration: 0.2s;
+  transition-duration: 200ms;
   cursor: pointer;
 }
 
+.submit:hover {
+  background-color: orange;
+}
+
 .arduinoCodeBox {
-  width: 700px;
+  width: 800px;
+  height: 600px;
+}
+
+.clipboardMessage {
+  font-size: 1.3rem;
+  color: rgb(163, 163, 163);
+  font-style: italic;
   margin: 20px;
 }
