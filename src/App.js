@@ -19,6 +19,7 @@ const App = () => {
 	const [cols, setCols] = useState(16)
 	const [rows, setRows] = useState(16)
 	const [snaked, setSnaked] = useState(true)
+	const [interval, setInterval] = useState(500)
 
     useEffect(() => {
         document.addEventListener('mousedown', () => setMouseDown(true))
@@ -138,6 +139,8 @@ const App = () => {
 					setRows,
 					snaked,
 					setSnaked,
+					interval,
+					setInterval,
 					currentDrawColor,
 					setCurrentDrawColor,
 					customColor,

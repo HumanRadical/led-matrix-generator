@@ -168,23 +168,35 @@ body {
   font-size: 1.25rem;
   font-weight: 600;
   margin: 10px;
-}
-
-.sizeSettings {
   display: flex;
-  width: 170px;
   justify-content: space-between;
+  align-items: center;
 }
 
-.sizeBox {
+.settingsNumBox {
   border: 3px solid black;
   border-radius: 4px;
   font-size: 1rem;
   text-align: center;
+}
+
+.sizeSettings {
+  width: 170px;
+}
+
+.sizeSettings input {
   width: 40px;
 }
 
 .snakeBox {
   width: 1rem;
   height: 1rem;
+}
+
+.intervalSettings {
+  width: 140px;
+}
+
+.intervalSettings input {
+  width: 50px;
 }

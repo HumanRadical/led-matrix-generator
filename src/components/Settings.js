@@ -8,15 +8,17 @@ const Settings = () => {
         setCols,
         setRows,
         snaked,
-        setSnaked
+        setSnaked,
+        interval,
+        setInterval
     } = useContext(FramesContext)
 
     return (
-        <div className='settings'>
+        <form className='settings'>
             <label className='sizeSettings'>
                 Size:
                 <input 
-                    className='sizeBox' 
+                    className='settingsNumBox' 
                     onChange={e => setCols(e.target.value)} 
                     value={cols} 
                     type='number' 
@@ -25,7 +27,7 @@ const Settings = () => {
                 /> 
                 x
                 <input 
-                    className='sizeBox' 
+                    className='settingsNumBox' 
                     onChange={e => setRows(e.target.value)} 
                     value={rows} 
                     type='number' 
@@ -33,7 +35,7 @@ const Settings = () => {
                     max='99' 
                 />
             </label>
-            <label className='snakeSetting'>
+            <label className='snakeSettings'>
                 Snake mode:
                 <input 
                     className='snakeBox' 
@@ -42,7 +44,17 @@ const Settings = () => {
                     checked={snaked} 
                 />
             </label>
-        </div>
+            <label className='intervalSettings'>
+                Interval:
+                <input 
+                    className='settingsNumBox' 
+                    onChange={e => setInterval(e.target.value)} 
+                    step={50}
+                    value={interval} 
+                    type='number'
+                />
+            </label>
+        </form>
     )
 }
 
