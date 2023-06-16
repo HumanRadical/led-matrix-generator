@@ -1,6 +1,7 @@
 const ArduinoCodeBox = () => {
     return (
         <>
+            <button class="submit">SUBMIT</button>
             <textarea className='codeBox arduinoCodeBox' />
         </>
     )
