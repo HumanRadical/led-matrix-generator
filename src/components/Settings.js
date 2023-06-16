@@ -49,6 +49,7 @@ const Settings = () => {
                 <input 
                     className='settingsNumBox' 
                     onChange={e => setInterval(e.target.value)} 
+                    min={1}
                     step={50}
                     value={interval} 
                     type='number'
