@@ -45,7 +45,7 @@ const Settings = () => {
                 />
             </label>
             <label className='intervalSettings'>
-                Interval:
+                Interval (ms):
                 <input 
                     className='settingsNumBox' 
                     onChange={e => setInterval(e.target.value)} 
