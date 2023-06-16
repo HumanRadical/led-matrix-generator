@@ -9,7 +9,6 @@ const DrawGrid = () => {
         frames,
         setFrames,
         currentFrameIndex,
-        setCurrentFrameIndex,
         mouseDown,
         cols,
         rows,
