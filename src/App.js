@@ -79,6 +79,7 @@ const App = () => {
 		return colorString
 	}
 
+	// NEED TO FIX ERROR WHEN RIGHTMOST FRAME IS DELETED
 	const deleteCurrentFrame = () => {
 		if (frames.length > 1) {
 			setFrames(prevFrames => {
