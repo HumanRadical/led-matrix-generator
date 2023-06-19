@@ -12,6 +12,19 @@ body {
   font-size: 2.2rem;
   font-weight: 600;
   margin: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.xButton {
+  width: 25px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.xButton:hover ~ span {
+  text-decoration: line-through;
 }
 
 .modeButtons > button {

@@ -4,6 +4,7 @@ import presets from './presets.json'
 import arrowLeft from './images/arrow-left.svg'
 import arrowRight from './images/arrow-right.svg'
 import plusIcon from './images/plus.svg'
+import xButton from './images/x-button.svg'
 import { FramesContext } from './context/FramesContext'
 import Settings from './components/Settings'
 import ColorPresets from './components/ColorPresets'
@@ -120,7 +121,10 @@ const App = () => {
 	return (
 		<>
 			<h1 className='title'>LED Matrix Generator</h1>
-			<h2 className='frameTitle'>Frame {currentFrameIndex + 1}</h2>
+			<h2 className='frameTitle'>
+				<img className='xButton' src={xButton} alt='' />
+				<span>Frame {currentFrameIndex + 1}</span>
+			</h2>
 			<form className='modeButtons'>
 				<button className='drawButton' onClick={setDrawMode}>Draw</button>
 				<button className='codeButton' onClick={setCodeMode}>Code</button>
