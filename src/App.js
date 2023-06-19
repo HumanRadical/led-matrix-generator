@@ -128,7 +128,6 @@ const App = () => {
 			newFrames.splice(currentFrameIndex, 0, presets.empty)
 			return newFrames
 		})
-		// setCurrentFrameIndex(prevFrameIndex => prevFrameIndex + 1)
 	}
 	
 	return (
