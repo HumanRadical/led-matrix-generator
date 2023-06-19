@@ -88,7 +88,7 @@ const App = () => {
 			})
 			return
 		}
-		frames[currentFrameIndex] = presets.empty
+		setFrames([presets.empty])
 	}
 
 	const setDrawMode = event => {
