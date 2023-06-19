@@ -67,7 +67,7 @@ const ArduinoCodeBox = () => {
         <>
             <button className='submit' onClick={updateArduinoCode}>SUBMIT</button>
             <p className='clipboardMessage'>{clipboardMessage && 'Copied to clipboard.'}</p>
-            <textarea className='codeBox arduinoCodeBox' value={arduinoCode} readOnly />
+            <textarea className='arduinoCodeBox' value={arduinoCode} readOnly />
         </>
     )
 }

@@ -221,6 +221,7 @@ body {
 }
 
 .arduinoCodeBox {
+  border: 5px solid black;
   width: 800px;
   height: 600px;
 }
