@@ -42,7 +42,6 @@ const DrawGrid = () => {
     
     let pixels = updatePixelColors()
 
-    //NEED TO FIGURE OUT HOW TO RUN THIS WHEN FRAME IS ADDED WITHOUT CHANGING CURRENTFRAMEINDEX
     useEffect(() => {
         setGrid(convertColorStringToArray(frames[currentFrameIndex], snaked))
         pixels = updatePixelColors()

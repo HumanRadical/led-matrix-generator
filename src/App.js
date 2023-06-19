@@ -79,6 +79,18 @@ const App = () => {
 		return colorString
 	}
 
+	const deleteCurrentFrame = () => {
+		if (frames.length > 1) {
+			setFrames(prevFrames => {
+				const newFrames = [...prevFrames]
+				newFrames.splice(currentFrameIndex, 1)
+				return newFrames
+			})
+			return
+		}
+		frames[currentFrameIndex] = presets.empty
+	}
+
 	const setDrawMode = event => {
 		event.preventDefault()
 		setCurrentMode('draw')
@@ -100,10 +112,8 @@ const App = () => {
 	}
 
 	const addNewFrameRight = () => {
-		const newFrames = Array.from(frames)
-		newFrames.splice(currentFrameIndex + 1, 0, presets.empty)
 		setFrames(prevFrames => {
-			const newFrames = prevFrames
+			const newFrames = [...prevFrames]
 			newFrames.splice(currentFrameIndex + 1, 0, presets.empty)
 			return newFrames
 		})
@@ -111,18 +121,18 @@ const App = () => {
 	}
 	const addNewFrameLeft = () => {
 		setFrames(prevFrames => {
-			const newFrames = prevFrames
+			const newFrames = [...prevFrames]
 			newFrames.splice(currentFrameIndex, 0, presets.empty)
 			return newFrames
 		})
-		setCurrentFrameIndex(prevFrameIndex => prevFrameIndex + 1)
+		// setCurrentFrameIndex(prevFrameIndex => prevFrameIndex + 1)
 	}
 	
 	return (
 		<>
 			<h1 className='title'>LED Matrix Generator</h1>
 			<h2 className='frameTitle'>
-				<img className='xButton' src={xButton} alt='' />
+				<img className='xButton' src={xButton} onClick={deleteCurrentFrame} alt='Delete Current Frame' />
 				<span>Frame {currentFrameIndex + 1}</span>
 			</h2>
 			<form className='modeButtons'>
