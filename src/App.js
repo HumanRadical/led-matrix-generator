@@ -79,7 +79,6 @@ const App = () => {
 		return colorString
 	}
 
-	// NEED TO FIX ERROR WHEN RIGHTMOST FRAME IS DELETED
 	const deleteCurrentFrame = () => {
 		if (frames.length > 1) {
 			setFrames(prevFrames => {
@@ -87,6 +86,9 @@ const App = () => {
 				newFrames.splice(currentFrameIndex, 1)
 				return newFrames
 			})
+			if (currentFrameIndex === frames.length - 1) {
+				setCurrentFrameIndex(prevFrameIndex => prevFrameIndex - 1)
+			}
 			return
 		}
 		setFrames([presets.empty])
