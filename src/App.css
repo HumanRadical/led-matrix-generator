@@ -78,6 +78,21 @@ body {
   background-color: white;
 }
 
+.previewArea {
+  width: 200px;
+}
+
+.previewTitle {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.preview {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+}
+
 .pixel {
   border: 1px solid white;
 }

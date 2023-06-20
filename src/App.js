@@ -10,6 +10,7 @@ import Settings from './components/Settings'
 import ColorPresets from './components/ColorPresets'
 import CurrentModeDisplay from './components/CurrentModeDisplay';
 import ArduinoCodeBox from './components/ArduinoCodeBox';
+import FramePreview from './components/FramePreview';
 
 const App = () => {
 	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2, presets.qbert1, presets.qbert2])
@@ -167,6 +168,11 @@ const App = () => {
 				}}
 			>
 				<section className='gridArea'>
+					{
+						frames[currentFrameIndex - 1] 
+						? <FramePreview type='last' />
+						: <div className='previewArea'></div>
+					}
 					<div className='arrowContainer'>
 						<img alt='New Frame' src={plusIcon} className='newFrameButton' onClick={addNewFrameLeft} />
 						{
@@ -182,6 +188,11 @@ const App = () => {
 							&& <img alt='Next Frame' src={arrowRight} className='arrowButton' onClick={increaseCurrentFrameIndex} />
 						}
 					</div>
+					{
+						frames[currentFrameIndex + 1] 
+						? <FramePreview type='next' />
+						: <div className='previewArea'></div>
+					}
 				</section>
 				{
 					currentMode === 'draw' && <ColorPresets />
