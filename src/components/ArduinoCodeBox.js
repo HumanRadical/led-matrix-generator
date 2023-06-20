@@ -16,10 +16,11 @@ const ArduinoCodeBox = () => {
         const setupDisplay = () => {
             let setupString = ""
             frames.forEach((frame, frameIndex) => {
-             setupString += `\nconst long Frame${frameIndex + 1}[] PROGMEM = 
-                { 
-                    ${frame} 
-                };\n`
+             setupString += 
+`const long Frame${frameIndex + 1}[] PROGMEM = 
+{ 
+${frame} 
+};\n`
             })
             return setupString
         }
@@ -27,35 +28,34 @@ const ArduinoCodeBox = () => {
         const showDisplay = () => {
             let showString = ""
             frames.forEach((frame, frameIndex) => {
-                showString += `\nFastLED.clear();
-                for(int i = 0; i < NUM_LEDS; i++) {
-                    leds[i] = pgm_read_dword(&(Frame${frameIndex + 1}[NUM_LEDS - i - 1]));
-                } 
-    
-                FastLED.show();
-                ${(interval ? `delay(${interval});\n` : "")}`
+                showString += 
+`    FastLED.clear();
+
+    for(int i = 0; i < NUM_LEDS; i++) {
+        leds[i] = pgm_read_dword(&(Frame${frameIndex + 1}[NUM_LEDS - i - 1]));
+    } 
+    FastLED.show();
+    ${(interval ? `delay(${interval});\n` : "")}`
             })
             return showString
         }
     
         const arduinoCodeOutput = 
-            `#include <avr/pgmspace.h>
-            #include "FastLED.h"  
+`#include <avr/pgmspace.h>
+#include "FastLED.h"  
     
-            #define NUM_LEDS ${rows * cols}
+#define NUM_LEDS ${rows * cols}
+#define DATA_PIN 7 
+CRGB leds[NUM_LEDS];
     
-            #define DATA_PIN 7 
+${setupDisplay()}
+void setup() { 
+    FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
+}
     
-            CRGB leds[NUM_LEDS];
-    
-            ${setupDisplay()}
-            void setup() { 
-            FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
-            }
-    
-            void loop() { 
-                ${showDisplay()}
-            }`
+void loop() { 
+${showDisplay()}
+}`
 
         setArduinoCode(arduinoCodeOutput)
         navigator.clipboard.writeText(arduinoCodeOutput)
