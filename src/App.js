@@ -23,6 +23,8 @@ const App = () => {
 	const [snaked, setSnaked] = useState(true)
 	const [interval, setInterval] = useState(500)
 
+	const emptyFrame = '0x000000' + ',0x000000'.repeat(rows * cols - 1)
+
     useEffect(() => {
         document.addEventListener('mousedown', () => setMouseDown(true))
         document.addEventListener('mouseup', () => setMouseDown(false))
@@ -91,7 +93,7 @@ const App = () => {
 			}
 			return
 		}
-		setFrames([presets.empty])
+		setFrames([emptyFrame])
 	}
 
 	const setDrawMode = event => {
@@ -117,7 +119,7 @@ const App = () => {
 	const addNewFrameRight = () => {
 		setFrames(prevFrames => {
 			const newFrames = [...prevFrames]
-			newFrames.splice(currentFrameIndex + 1, 0, presets.empty)
+			newFrames.splice(currentFrameIndex + 1, 0, emptyFrame)
 			return newFrames
 		})
 		setCurrentFrameIndex(prevFrameIndex => prevFrameIndex + 1)
@@ -125,7 +127,7 @@ const App = () => {
 	const addNewFrameLeft = () => {
 		setFrames(prevFrames => {
 			const newFrames = [...prevFrames]
-			newFrames.splice(currentFrameIndex, 0, presets.empty)
+			newFrames.splice(currentFrameIndex, 0, emptyFrame)
 			return newFrames
 		})
 	}
