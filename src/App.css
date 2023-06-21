@@ -78,16 +78,16 @@ body {
   background-color: white;
 }
 
-.previewArea {
+.framePreviewArea {
   width: 200px;
 }
 
-.previewTitle {
+.framePreviewTitle {
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-.preview {
+.framePreview {
   width: 150px;
   height: 150px;
   margin: auto;

@@ -39,9 +39,9 @@ const FramePreview = ({type}) => {
     }, [frames, currentFrameIndex, snaked])
 
     return (
-        <section className="previewArea">
-            <h3 className="previewTitle">{type === 'last' ? 'Last' : 'Next'} Frame</h3>
-            <div className="grid preview">
+        <section className="framePreviewArea">
+            <h3 className="framePreviewTitle">{type === 'last' ? 'Last' : 'Next'} Frame</h3>
+            <div className="grid framePreview">
                 {pixels}
             </div>
         </section>

@@ -171,7 +171,7 @@ const App = () => {
 					{
 						frames[currentFrameIndex - 1] 
 						? <FramePreview type='last' />
-						: <div className='previewArea'></div>
+						: <div className='framePreviewArea'></div>
 					}
 					<div className='arrowContainer'>
 						<img alt='New Frame' src={plusIcon} className='newFrameButton' onClick={addNewFrameLeft} />
@@ -191,7 +191,7 @@ const App = () => {
 					{
 						frames[currentFrameIndex + 1] 
 						? <FramePreview type='next' />
-						: <div className='previewArea'></div>
+						: <div className='framePreviewArea'></div>
 					}
 				</section>
 				{
