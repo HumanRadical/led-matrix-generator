@@ -1,17 +1,64 @@
 import { useContext, useState } from 'react'
 import { FramesContext } from '../context/FramesContext'
-import AnimationPreview from './AnimationPreview'
+import errorIcon from '../images/error.svg'
 
 const SubmitAndOutput = () => {
     const {
         frames,
         rows,
         cols,
-        interval
+        convertColorStringToArray,
+        snaked,
+        interval,
     } = useContext(FramesContext)
 
     const [arduinoCode, setArduinoCode] = useState('')
     const [clipboardMessage, setClipboardMessage] = useState(false)
+    const [grid, setGrid] = useState([])
+
+    const handleSubmit = () => {
+        startAnimation()
+        updateArduinoCode()
+    }
+    
+    const updatePixelColors = (currentCols, currentRows) => {
+        return grid.map((pixel, pixelIndex) => {
+            if (CSS.supports('color', pixel)) {
+                return <div
+                    style={{ width: 450 / currentCols, height: 450 / currentRows, backgroundColor: pixel}} 
+                    key={`Animation Preview Pixel ${pixelIndex}`}
+                ></div>
+            }
+            return <img 
+                src={errorIcon}
+                style={{ width: 450 / currentCols, height: 450 / currentRows}} 
+                alt='Invalid Pixel'
+                key={`Animation Preview Pixel ${pixelIndex}`}
+            />
+        })
+    }
+    
+    let pixels = updatePixelColors(cols, rows)
+    let animationInterval
+
+    const startAnimation = () => {
+        clearInterval(animationInterval)
+
+        let frameIndex = 0
+        const currentFrames = [...frames]
+        const currentCols = cols
+        const currentRows = rows
+
+        animationInterval = setInterval(() => {
+            setGrid(convertColorStringToArray(currentFrames[frameIndex], snaked))
+            pixels = updatePixelColors(currentCols, currentRows)
+            if (frameIndex >= frames.length - 1) {
+                frameIndex = 0
+            } else {
+                frameIndex++
+            }
+        }, interval)
+    }
 
     const updateArduinoCode = () => {
         const setupDisplay = () => {
@@ -66,9 +113,14 @@ ${showDisplay()}
 
     return (
         <>
-            <button className='submit' onClick={updateArduinoCode}>SUBMIT</button>
+            <button className='submit' onClick={handleSubmit}>SUBMIT</button>
             <section className='outputSection'>
-                <AnimationPreview />
+                <section>
+                    <h3 className='animationPreviewTitle'>Preview:</h3>
+                    <div className='grid animationPreview'>
+                        {pixels}
+                    </div>
+                </section>
                 <div>
                     <p className='clipboardMessage'>{clipboardMessage && 'Copied to clipboard.'}</p>
                     <textarea className='arduinoCodeBox' value={arduinoCode} readOnly />
