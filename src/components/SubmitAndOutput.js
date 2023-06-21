@@ -1,6 +1,6 @@
-import { useContext, useState } from "react"
-import { FramesContext } from "../context/FramesContext"
-import AnimationPreview from "./AnimationPreview"
+import { useContext, useState } from 'react'
+import { FramesContext } from '../context/FramesContext'
+import AnimationPreview from './AnimationPreview'
 
 const SubmitAndOutput = () => {
     const {
@@ -15,7 +15,7 @@ const SubmitAndOutput = () => {
 
     const updateArduinoCode = () => {
         const setupDisplay = () => {
-            let setupString = ""
+            let setupString = ''
             frames.forEach((frame, frameIndex) => {
              setupString += 
 `const long Frame${frameIndex + 1}[] PROGMEM = 
@@ -27,7 +27,7 @@ ${frame}
         }
     
         const showDisplay = () => {
-            let showString = ""
+            let showString = ''
             frames.forEach((frame, frameIndex) => {
                 showString += 
 `    FastLED.clear();
@@ -36,14 +36,14 @@ ${frame}
         leds[i] = pgm_read_dword(&(Frame${frameIndex + 1}[NUM_LEDS - i - 1]));
     } 
     FastLED.show();
-    ${(interval ? `delay(${interval});\n` : "")}`
+    ${(interval ? `delay(${interval});\n` : '')}`
             })
             return showString
         }
     
         const arduinoCodeOutput = 
 `#include <avr/pgmspace.h>
-#include "FastLED.h"  
+#include 'FastLED.h'  
     
 #define NUM_LEDS ${rows * cols}
 #define DATA_PIN 7 
@@ -67,7 +67,7 @@ ${showDisplay()}
     return (
         <>
             <button className='submit' onClick={updateArduinoCode}>SUBMIT</button>
-            <section className="outputSection">
+            <section className='outputSection'>
                 <AnimationPreview />
                 <div>
                     <p className='clipboardMessage'>{clipboardMessage && 'Copied to clipboard.'}</p>

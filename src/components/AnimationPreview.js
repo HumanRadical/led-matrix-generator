@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react"
-import { FramesContext } from "../context/FramesContext"
+import { useContext, useEffect, useState } from 'react'
+import { FramesContext } from '../context/FramesContext'
 import errorIcon from '../images/error.svg'
 
 const AnimationPreview = () => {
@@ -48,8 +48,8 @@ const AnimationPreview = () => {
 
     return (
         <section>
-            <h3 className="animationPreviewTitle">Preview:</h3>
-            <div className="grid animationPreview">
+            <h3 className='animationPreviewTitle'>Preview:</h3>
+            <div className='grid animationPreview'>
                 {pixels}
             </div>
         </section>
