@@ -249,6 +249,21 @@ body {
   background-color: orange;
 }
 
+.outputSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.animationPreviewTitle {
+  font-size: 1.5rem;
+}
+
+.animationPreview {
+  width: 450px;
+  height: 450px;
+}
+
 .arduinoCodeBox {
   border: 5px solid black;
   width: 800px;

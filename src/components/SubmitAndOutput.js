@@ -67,9 +67,13 @@ ${showDisplay()}
     return (
         <>
             <button className='submit' onClick={updateArduinoCode}>SUBMIT</button>
-            <AnimationPreview />
-            <p className='clipboardMessage'>{clipboardMessage && 'Copied to clipboard.'}</p>
-            <textarea className='arduinoCodeBox' value={arduinoCode} readOnly />
+            <section className="outputSection">
+                <AnimationPreview />
+                <div>
+                    <p className='clipboardMessage'>{clipboardMessage && 'Copied to clipboard.'}</p>
+                    <textarea className='arduinoCodeBox' value={arduinoCode} readOnly />
+                </div>
+            </section>
         </>
     )
 }
