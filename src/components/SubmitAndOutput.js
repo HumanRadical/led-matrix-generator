@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { FramesContext } from '../context/FramesContext'
 import errorIcon from '../images/error.svg'
 
@@ -39,17 +39,18 @@ const SubmitAndOutput = () => {
     }
     
     let pixels = updatePixelColors(cols, rows)
-    let animationInterval
+    const animationInterval = useRef()
 
     const startAnimation = () => {
-        clearInterval(animationInterval)
+        clearInterval(animationInterval.current)
+        animationInterval.current = null
 
         let frameIndex = 0
         const currentFrames = [...frames]
         const currentCols = cols
         const currentRows = rows
 
-        animationInterval = setInterval(() => {
+        animationInterval.current = setInterval(() => {
             setGrid(convertColorStringToArray(currentFrames[frameIndex], snaked))
             pixels = updatePixelColors(currentCols, currentRows)
             if (frameIndex >= frames.length - 1) {
