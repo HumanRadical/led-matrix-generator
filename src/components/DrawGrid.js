@@ -27,7 +27,7 @@ const DrawGrid = () => {
                     onMouseDown={e => colorInPixel(e, pixelIndex)}
                     onMouseMove={e => colorInPixelIfMouseDown(e, pixelIndex)}
                     style={{ width: 550 / cols - 2, height: 550 / rows - 2, backgroundColor: pixel}} 
-                    key={pixelIndex}
+                    key={`Draw Pixel ${pixelIndex}`}
                 ></div>
             }
             return <img 
@@ -35,7 +35,7 @@ const DrawGrid = () => {
                 className='pixel'
                 style={{ width: 550 / cols - 2, height: 550 / rows - 2}} 
                 alt='Invalid Pixel'
-                key={pixelIndex}
+                key={`Draw Pixel ${pixelIndex}`}
             />
         })
     }

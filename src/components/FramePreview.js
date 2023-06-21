@@ -19,14 +19,14 @@ const FramePreview = ({type}) => {
             if (CSS.supports('color', pixel)) {
                 return <div
                     style={{ width: 150 / cols, height: 150 / rows, backgroundColor: pixel}} 
-                    key={pixelIndex}
+                    key={type === 'last' ? `Last Frame Pixel ${pixelIndex}` : `Next Frame Pixel ${pixelIndex}`}
                 ></div>
             }
             return <img 
                 src={errorIcon}
                 style={{ width: 150 / cols, height: 150 / rows}} 
                 alt='Invalid Pixel'
-                key={pixelIndex}
+                key={type === 'last' ? `Last Frame Pixel ${pixelIndex}` : `Next Frame Pixel ${pixelIndex}`}
             />
         })
     }
