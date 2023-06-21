@@ -5,6 +5,8 @@ const CodeBox = () => {
     const {
         frames,
         setFrames,
+        cols,
+        rows,
         currentFrameIndex
     } = useContext(FramesContext)
 
@@ -21,7 +23,7 @@ const CodeBox = () => {
 
     useEffect(() => {
         setBoxValue(frames[currentFrameIndex])
-    }, [currentFrameIndex])
+    }, [frames, currentFrameIndex, cols, rows])
 
     return (
         <>
