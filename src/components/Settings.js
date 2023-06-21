@@ -25,18 +25,16 @@ const Settings = () => {
             newSize = cols * event.target.value
             setRows(event.target.value)
         }
+
         if (oldSize > newSize) {
-            const sizeDiff = oldSize - newSize
             const newFrames = []
             for (let frame of frames) {
-                //NEED TO FIND A BETTER WAY TO DO THIS
-                const newFrame = frame.slice(0, frame.length - (sizeDiff * 9))
+                const newFrame = frame.split(',').splice(0, newSize).join()
                 newFrames.push(newFrame)
             }
             setFrames(newFrames)
         } else if (oldSize < newSize) {
-            const sizeDiff = newSize - oldSize
-            const newPixels = ',0x000000'.repeat(sizeDiff)
+            const newPixels = ',0x000000'.repeat(newSize - oldSize)
             const newFrames = []
             for (let frame of frames) {
                 const newFrame = frame + newPixels
