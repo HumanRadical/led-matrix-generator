@@ -123,7 +123,7 @@ ${showDisplay()}
             <button className='submit' onClick={handleSubmit}>SUBMIT</button>
             <section className='outputSection'>
                 <section>
-                    <h3 className='animationPreviewTitle'>Preview:</h3>
+                    <h3 className='animationPreviewTitle'>Preview</h3>
                     <div className='grid animationPreview'>
                         {pixels}
                     </div>
