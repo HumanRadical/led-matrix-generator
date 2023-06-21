@@ -1,7 +1,8 @@
 import { useContext, useState } from "react"
 import { FramesContext } from "../context/FramesContext"
+import AnimationPreview from "./AnimationPreview"
 
-const ArduinoCodeBox = () => {
+const SubmitAndOutput = () => {
     const {
         frames,
         rows,
@@ -66,10 +67,11 @@ ${showDisplay()}
     return (
         <>
             <button className='submit' onClick={updateArduinoCode}>SUBMIT</button>
+            <AnimationPreview />
             <p className='clipboardMessage'>{clipboardMessage && 'Copied to clipboard.'}</p>
             <textarea className='arduinoCodeBox' value={arduinoCode} readOnly />
         </>
     )
 }
 
-export default ArduinoCodeBox
+export default SubmitAndOutput

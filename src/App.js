@@ -9,7 +9,7 @@ import { FramesContext } from './context/FramesContext'
 import Settings from './components/Settings'
 import ColorPresets from './components/ColorPresets'
 import CurrentModeDisplay from './components/CurrentModeDisplay';
-import ArduinoCodeBox from './components/ArduinoCodeBox';
+import SubmitAndOutput from './components/SubmitAndOutput';
 import FramePreview from './components/FramePreview';
 
 const App = () => {
@@ -198,7 +198,7 @@ const App = () => {
 					currentMode === 'draw' && <ColorPresets />
 				}
 				<Settings />
-				<ArduinoCodeBox />
+				<SubmitAndOutput />
 			</FramesContext.Provider>
 		</>
 	)
