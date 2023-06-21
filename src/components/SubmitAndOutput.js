@@ -16,29 +16,33 @@ const SubmitAndOutput = () => {
     const [clipboardMessage, setClipboardMessage] = useState(false)
     const [grid, setGrid] = useState([])
 
+    const currentFrames = useRef()
+    const currentCols = useRef()
+    const currentRows = useRef()
+
     const handleSubmit = () => {
         startAnimation()
         updateArduinoCode()
     }
     
-    const updatePixelColors = (currentCols, currentRows) => {
+    const updatePixelColors = () => {
         return grid.map((pixel, pixelIndex) => {
             if (CSS.supports('color', pixel)) {
                 return <div
-                    style={{ width: 450 / currentCols, height: 450 / currentRows, backgroundColor: pixel}} 
+                    style={{ width: 450 / currentCols.current, height: 450 / currentRows.current, backgroundColor: pixel}} 
                     key={`Animation Preview Pixel ${pixelIndex}`}
                 ></div>
             }
             return <img 
                 src={errorIcon}
-                style={{ width: 450 / currentCols, height: 450 / currentRows}} 
+                style={{ width: 450 / currentCols.current, height: 450 / currentRows.current}} 
                 alt='Invalid Pixel'
                 key={`Animation Preview Pixel ${pixelIndex}`}
             />
         })
     }
     
-    let pixels = updatePixelColors(cols, rows)
+    let pixels = updatePixelColors()
     const animationInterval = useRef()
 
     const startAnimation = () => {
@@ -46,19 +50,21 @@ const SubmitAndOutput = () => {
         animationInterval.current = null
 
         let frameIndex = 0
-        const currentFrames = [...frames]
-        const currentCols = cols
-        const currentRows = rows
+        currentFrames.current = [...frames]
+        currentCols.current = cols
+        currentRows.current = rows
 
-        animationInterval.current = setInterval(() => {
-            setGrid(convertColorStringToArray(currentFrames[frameIndex], snaked))
-            pixels = updatePixelColors(currentCols, currentRows)
-            if (frameIndex >= frames.length - 1) {
-                frameIndex = 0
-            } else {
-                frameIndex++
-            }
-        }, interval)
+        setGrid(convertColorStringToArray(currentFrames.current[frameIndex], snaked))
+        pixels = updatePixelColors()
+        
+        if (currentFrames.current.length > 1) {
+            frameIndex++
+            animationInterval.current = setInterval(() => {
+                setGrid(convertColorStringToArray(currentFrames.current[frameIndex], snaked))
+                pixels = updatePixelColors()
+                currentFrames.current[frameIndex + 1] ? frameIndex++ : frameIndex = 0
+            }, interval)
+        }
     }
 
     const updateArduinoCode = () => {
