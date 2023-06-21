@@ -6,10 +6,10 @@ const AnimationPreview = () => {
     const {
         convertColorStringToArray,
         frames,
-        currentFrameIndex,
         cols,
         rows,
         snaked,
+        interval,
     } = useContext(FramesContext)
 
     const [grid, setGrid] = useState([])
@@ -34,9 +34,17 @@ const AnimationPreview = () => {
     let pixels = updatePixelColors()
 
     useEffect(() => {
-        setGrid(convertColorStringToArray(frames[currentFrameIndex], snaked))
-        pixels = updatePixelColors()
-    }, [frames, currentFrameIndex, snaked])
+        let frameIndex = 0
+        setInterval(() => {
+            setGrid(convertColorStringToArray(frames[frameIndex], snaked))
+            pixels = updatePixelColors()
+            if (frameIndex >= frames.length - 1) {
+                frameIndex = 0
+            } else {
+                frameIndex++
+            }
+        }, interval)
+    }, [])
 
     return (
         <section>
