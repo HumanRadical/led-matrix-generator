@@ -1,28 +1,52 @@
+import { useContext } from "react"
+import { FramesContext } from "../context/FramesContext"
+
 const ImageUpload = () => {
+    const {
+            setFrames,
+            currentFrameIndex,
+            setCurrentMode,
+            cols,
+            rows,
+            snaked,
+            snakeColors
+    } = useContext(FramesContext)
 
     const renderimage = event => {
+
         const imageUrl = URL.createObjectURL(event.target.files[0])
         const image = new Image()
         image.src = imageUrl
 
         image.onload = event => {
             const canvas = document.createElement('canvas')
-            canvas.width = 16
-            canvas.height = 16
+            canvas.width = cols
+            canvas.height = rows
 
             const context = canvas.getContext('2d')
             context.drawImage(event.target, 0, 0, canvas.width, canvas.height)
             
             const pixelData = context.getImageData(0, 0, canvas.width, canvas.height).data
-            const newColorArray = []
+            let newColorArray = []
             for (let i = 0; i < pixelData.length; i += 4) {
-                const r = parseInt(pixelData[i], 10).toString(16)
-                const g = parseInt(pixelData[i + 1], 10).toString(16)
-                const b = parseInt(pixelData[i + 2], 10).toString(16)
-                const hexString = '0x' + r + g + b
+                const hexString = "0x" + 
+                (parseInt(pixelData[i],10).toString(16)) +
+                ("0" + parseInt(pixelData[i + 1],10).toString(16)).slice(-2) +
+                ("0" + parseInt(pixelData[i + 2],10).toString(16)).slice(-2)
                 newColorArray.push(hexString)
             }
-            console.log(newColorArray);
+            
+            if (snaked) {
+                newColorArray = snakeColors(newColorArray)
+            }
+            const newColorFrame = newColorArray.join()
+            
+            setFrames(prevFrames => {
+                const newFrames = [...prevFrames]
+                newFrames[currentFrameIndex] = newColorFrame
+                return newFrames
+            })
+            setCurrentMode('draw')
         }
     }
 
