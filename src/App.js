@@ -145,9 +145,9 @@ const App = () => {
 				<span>Frame {currentFrameIndex + 1}</span>
 			</h2>
 			<form className='modeButtons'>
-				<button onClick={setDrawMode}>Draw</button>
-				<button onClick={setCodeMode}>Code</button>
-				<button onClick={setImageMode}>Image</button>
+				<button onClick={setDrawMode} style={{width: 560/3}}>Draw</button>
+				<button onClick={setCodeMode} style={{width: 560/3}}>Code</button>
+				<button onClick={setImageMode} style={{width: 560/3}}>Image</button>
 			</form>
 			<FramesContext.Provider 
 				value={{

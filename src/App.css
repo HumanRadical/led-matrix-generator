@@ -29,8 +29,6 @@ body {
 }
 
 .modeButtons > button {
-  /* width = 560/# of mode buttons */
-  width: 186.6px;
   height: 40px;
   background-color: white;
   border: 5px solid black;
