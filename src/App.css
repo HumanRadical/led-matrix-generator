@@ -90,7 +90,7 @@ body {
   resize: none;
 }
 
-.photoUpload {
+.imageUpload {
   background-color: rgb(222, 222, 222);
 }
 
@@ -123,6 +123,11 @@ body {
 
 .fileUploadContainer input {
   display: none;
+}
+
+.uploadedImage {
+  width: 550px;
+  height: 550px;
 }
 
 .framePreviewArea {

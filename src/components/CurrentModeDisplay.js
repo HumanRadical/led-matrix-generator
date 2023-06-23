@@ -1,6 +1,6 @@
 import CodeBox from "./CodeBox"
 import DrawGrid from "./DrawGrid"
-import PhotoUpload from "./PhotoUpload"
+import ImageUpload from "./ImageUpload"
 
 const CurrentModeDisplay = ({currentMode}) => {
     if (currentMode === 'draw') {
@@ -8,7 +8,7 @@ const CurrentModeDisplay = ({currentMode}) => {
     } else if (currentMode === 'code') {
         return <CodeBox />
     }
-    return <PhotoUpload />
+    return <ImageUpload />
 } 
 
 export default CurrentModeDisplay
