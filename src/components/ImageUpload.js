@@ -32,11 +32,6 @@ const ImageUpload = () => {
                 ('0' + parseInt(pixelData[i], 10).toString(16)).slice(-2) +
                 ('0' + parseInt(pixelData[i + 1], 10).toString(16)).slice(-2) +
                 ('0' + parseInt(pixelData[i + 2], 10).toString(16)).slice(-2)
-
-                if (hexString.length < 8) {
-                    console.log(pixelData[i], pixelData[i + 1], pixelData[i + 2])
-                    console.log(hexString);
-                }
                 newColorArray.push(hexString)
             }
 
