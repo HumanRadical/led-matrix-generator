@@ -29,13 +29,17 @@ const ImageUpload = () => {
             const pixelData = context.getImageData(0, 0, canvas.width, canvas.height).data
             let newColorArray = []
             for (let i = 0; i < pixelData.length; i += 4) {
-                const hexString = "0x" + 
+                let hexString = "0x" + 
                 (parseInt(pixelData[i],10).toString(16)) +
                 ("0" + parseInt(pixelData[i + 1],10).toString(16)).slice(-2) +
                 ("0" + parseInt(pixelData[i + 2],10).toString(16)).slice(-2)
+
+                if (hexString === '0x00000') {
+                    hexString = '0x000000'
+                }
                 newColorArray.push(hexString)
             }
-            
+
             if (snaked) {
                 newColorArray = snakeColors(newColorArray)
             }
