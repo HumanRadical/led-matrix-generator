@@ -1,5 +1,5 @@
-import { useContext } from "react"
-import { FramesContext } from "../context/FramesContext"
+import { useContext } from 'react'
+import { FramesContext } from '../context/FramesContext'
 
 const ImageUpload = () => {
     const {
@@ -13,7 +13,6 @@ const ImageUpload = () => {
     } = useContext(FramesContext)
 
     const renderimage = event => {
-
         const imageUrl = URL.createObjectURL(event.target.files[0])
         const image = new Image()
         image.src = imageUrl

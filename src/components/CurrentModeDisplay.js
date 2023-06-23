@@ -1,8 +1,8 @@
-import { useContext } from "react"
-import CodeBox from "./CodeBox"
-import DrawGrid from "./DrawGrid"
-import ImageUpload from "./ImageUpload"
-import { FramesContext } from "../context/FramesContext"
+import { useContext } from 'react'
+import CodeBox from './CodeBox'
+import DrawGrid from './DrawGrid'
+import ImageUpload from './ImageUpload'
+import { FramesContext } from '../context/FramesContext'
 
 const CurrentModeDisplay = () => {
     const {
