@@ -1,14 +1,13 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 const ImageUpload = () => {
     const [isUploaded, setIsUploaded] = useState(false)
     const [uploadedImage, setUploadedImage] = useState()
 
     const renderimage = event => {
-        setIsUploaded(true)
-
         const image = event.target.files[0]
         setUploadedImage(URL.createObjectURL(image))
+        setIsUploaded(true)
     }
 
     return (
