@@ -79,6 +79,52 @@ body {
   background-color: white;
 }
 
+.pixel {
+  border: 1px solid white;
+}
+
+.codeBox {
+  border: 5px solid black;
+  width: 546px;
+  height: 546px;
+  resize: none;
+}
+
+.photoUpload {
+  background-color: rgb(222, 222, 222);
+}
+
+.fileUploadContainer {
+  margin: auto;
+}
+
+.fileUploadContainer h3 {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.fileUploadContainer label {
+  margin: 0;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  background-color: white;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.fileUploadContainer label:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.fileUploadContainer input {
+  display: none;
+}
+
 .framePreviewArea {
   width: 200px;
 }
@@ -93,17 +139,6 @@ body {
   width: 150px;
   height: 150px;
   margin: auto;
-}
-
-.pixel {
-  border: 1px solid white;
-}
-
-.codeBox {
-  border: 5px solid black;
-  width: 546px;
-  height: 546px;
-  resize: none;
 }
 
 .colorPresetForm {
