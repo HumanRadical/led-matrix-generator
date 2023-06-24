@@ -3,13 +3,13 @@ import { FramesContext } from '../context/FramesContext'
 
 const ImageUpload = () => {
     const {
-            setFrames,
-            currentFrameIndex,
-            setCurrentMode,
-            cols,
-            rows,
-            snaked,
-            snakeColors
+        setFrames,
+        currentFrameIndex,
+        setCurrentMode,
+        cols,
+        rows,
+        snaked,
+        snakeColors
     } = useContext(FramesContext)
 
     const renderimage = event => {
@@ -23,9 +23,11 @@ const ImageUpload = () => {
             canvas.height = rows
 
             const context = canvas.getContext('2d')
+            context.imageSmoothingEnabled = false
             context.drawImage(event.target, 0, 0, canvas.width, canvas.height)
             
             const pixelData = context.getImageData(0, 0, canvas.width, canvas.height).data
+            debugger
             let newColorArray = []
             for (let i = 0; i < pixelData.length; i += 4) {
                 let hexString = '0x' + 
