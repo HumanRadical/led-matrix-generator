@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { FramesContext } from '../context/FramesContext'
 
 const ImageUpload = () => {
@@ -12,6 +12,8 @@ const ImageUpload = () => {
         snakeColors
     } = useContext(FramesContext)
 
+    const [antiAliasing, setAntiAliasing] = useState(false)
+
     const renderimage = event => {
         const imageUrl = URL.createObjectURL(event.target.files[0])
         const image = new Image()
@@ -23,7 +25,7 @@ const ImageUpload = () => {
             canvas.height = rows
 
             const context = canvas.getContext('2d')
-            context.imageSmoothingEnabled = false
+            context.imageSmoothingEnabled = antiAliasing
             context.drawImage(event.target, 0, 0, canvas.width, canvas.height)
             
             const pixelData = context.getImageData(0, 0, canvas.width, canvas.height).data
@@ -55,8 +57,16 @@ const ImageUpload = () => {
         <div className='grid imageUpload'>
             <div className='fileUploadContainer'>
                 <h3>Upload image:</h3>
-                <label htmlFor='fileUpload'>Choose image</label>
-                <input type='file' onChange={renderimage} accept='image/jpeg, image/png, image/jpg' id='fileUpload' />
+                <label className='chooseImage'>
+                    Choose image
+                    <input type='file' onChange={renderimage} accept='image/jpeg, image/png, image/jpg' />
+                </label>
+                <div>
+                    <label className='antiAliasing'>
+                        <input type='checkbox' checked={antiAliasing} onChange={() => setAntiAliasing(prevAliasing => !prevAliasing)} />
+                        Anti-aliasing
+                    </label>
+                </div>
             </div>
         </div>
     )

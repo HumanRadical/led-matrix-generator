@@ -104,28 +104,34 @@ body {
 }
 
 .fileUploadContainer label {
+  display: inline-block;
+}
+
+.chooseImage {
   margin: 0;
   border: 2px solid black;
   border-radius: 5px;
   font-size: 0.9rem;
   background-color: white;
-  display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
   transition: all 200ms;
 }
 
-.fileUploadContainer label:hover {
+.chooseImage:hover {
   background-color: rgb(235, 235, 235);
 }
 
-.fileUploadContainer input {
+.chooseImage input {
   display: none;
 }
 
-.uploadedImage {
-  width: 550px;
-  height: 550px;
+.antiAliasing {
+  margin: 10px;
+}
+
+.antiAliasing input {
+  margin-right: 8px;
 }
 
 .framePreviewArea {
