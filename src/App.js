@@ -13,7 +13,7 @@ import SubmitAndOutput from './components/SubmitAndOutput';
 import FramePreview from './components/FramePreview';
 
 const App = () => {
-	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2, presets.qbert1, presets.qbert2])
+	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2])
 	const [currentFrameIndex, setCurrentFrameIndex] = useState(0)
 	const [currentMode, setCurrentMode] = useState('draw')
 	const [mouseDown, setMouseDown] = useState(false)
