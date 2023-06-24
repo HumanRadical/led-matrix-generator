@@ -29,7 +29,6 @@ const ImageUpload = () => {
             context.drawImage(event.target, 0, 0, canvas.width, canvas.height)
             
             const pixelData = context.getImageData(0, 0, canvas.width, canvas.height).data
-            debugger
             let newColorArray = []
             for (let i = 0; i < pixelData.length; i += 4) {
                 let hexString = '0x' + 
