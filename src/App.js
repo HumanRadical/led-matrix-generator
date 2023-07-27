@@ -8,9 +8,9 @@ import xButton from './images/x-button.svg'
 import { FramesContext } from './context/FramesContext'
 import Settings from './components/Settings'
 import ColorPresets from './components/ColorPresets'
-import CurrentModeDisplay from './components/CurrentModeDisplay';
-import SubmitAndOutput from './components/SubmitAndOutput';
-import FramePreview from './components/FramePreview';
+import CurrentModeDisplay from './components/CurrentModeDisplay'
+import SubmitAndOutput from './components/SubmitAndOutput'
+import FramePreview from './components/FramePreview'
 
 const App = () => {
 	const [frames, setFrames] = useState([presets.digdug1, presets.digdug2])
