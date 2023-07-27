@@ -109,6 +109,10 @@ const App = () => {
 		event.preventDefault()
 		setCurrentMode('image')
 	}
+	const setAIMode = event => {
+		event.preventDefault()
+		setCurrentMode('ai')
+	}
 
 	const decreaseCurrentFrameIndex = () => {
 		if (frames[currentFrameIndex - 1]) {
@@ -145,9 +149,10 @@ const App = () => {
 				<span>Frame {currentFrameIndex + 1}</span>
 			</h2>
 			<form className='modeButtons'>
-				<button onClick={setDrawMode} style={{width: 560/3}}>Draw</button>
-				<button onClick={setCodeMode} style={{width: 560/3}}>Code</button>
-				<button onClick={setImageMode} style={{width: 560/3}}>Image</button>
+				<button onClick={setDrawMode} style={{width: 560/4}}>Draw</button>
+				<button onClick={setCodeMode} style={{width: 560/4}}>Code</button>
+				<button onClick={setImageMode} style={{width: 560/4}}>Image</button>
+				<button onClick={setAIMode} style={{width: 560/4}}>AI</button>
 			</form>
 			<FramesContext.Provider 
 				value={{
