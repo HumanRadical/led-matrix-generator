@@ -14,7 +14,7 @@ const ImageUpload = () => {
 
     const [antiAliasing, setAntiAliasing] = useState(false)
 
-    const renderimage = event => {
+    const renderImage = event => {
         const imageUrl = URL.createObjectURL(event.target.files[0])
         const image = new Image()
         image.src = imageUrl
@@ -58,7 +58,7 @@ const ImageUpload = () => {
                 <h3>Upload image:</h3>
                 <label className='chooseImage'>
                     Choose image
-                    <input type='file' onChange={renderimage} accept='image/jpeg, image/png, image/jpg' />
+                    <input type='file' onChange={renderImage} accept='image/jpeg, image/png, image/jpg' />
                 </label>
                 <div>
                     <label className='antiAliasing'>
